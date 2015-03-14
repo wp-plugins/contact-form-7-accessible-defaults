@@ -24,7 +24,7 @@ For more information about making Contact Form 7 accessible, read [how to set up
 
 = Translations =
 
-None yet; there are only a few strings in here, and there all editable fields. The plug-in is translation ready, so let me know if you want them created at [my translations site](http://translate.joedolson.com). 
+None yet; there are only a few strings in here, and they're all editable fields. The plug-in is translation ready, so let me know if you want them created at [my translations site](http://translate.joedolson.com). 
 
 == Changelog ==
 
