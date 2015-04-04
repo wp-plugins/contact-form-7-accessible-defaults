@@ -6,7 +6,7 @@ Requires at least: 3.7.0
 Tested up to: 4.1.1
 License: GPLv2 or later
 Text Domain: accessible-contact-form-7
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 
 Replaces the default Contact Form 7 form with an accessible equivalent and provides a suite of selectable base forms. 
 
