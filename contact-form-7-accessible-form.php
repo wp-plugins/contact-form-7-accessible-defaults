@@ -4,7 +4,7 @@
 Plugin Name: Contact Form 7: Accessible Defaults
 Plugin URI: http://www.joedolson.com/
 Description: Sets up an accessible default form when using Contact Form 7. 
-Version: 1.1.0
+Version: 1.1.1
 Author: Joseph Dolson
 Author URI: http://www.joedolson.com/
 Text Domain: accessible-contact-form-7
@@ -238,7 +238,16 @@ function cf7adb_forms( $post ) {
  * @param $post Current Contact Form 7 object
  * @return $links list of links to select from.
  */
-add_action( 'wpcf7_admin_after_general_settings', 'cf7adb_select_form' );
+add_filter( 'wpcf7_editor_panels', 'cf7adb_create_form' );
+function cf7adb_create_form( $panels ) {
+	$panels['accessible-contact-forms'] = array(
+		'title' => __( 'Templates', 'accessible-contact-form-7' ),
+		'callback' => 'cf7adb_select_form'
+	);
+	
+	return $panels;
+}
+
 function cf7adb_select_form( $post ) {
 	if ( isset( $_GET['page'] ) && $_GET['page'] == 'wpcf7-new' ) {
 		$links = '';
@@ -259,16 +268,12 @@ function cf7adb_select_form( $post ) {
 		}
 		if ( $links ) {
 			$links = "
-			<div class='meta-box-sortables ui-sortable'>
-				<div class='postbox'>
-				<h3 class='hndle ui-sortable-handle'>". __( 'Select an accessible base form:', 'accessible-contact-form-7' ) . "</h3>
-					<div class='inside'>
+				<h3>". __( 'Select an accessible base form:', 'accessible-contact-form-7' ) . "</h3>
+					<div class='select-accessible-template'>
 						<ul class='cf7adb'>
 							$links
 						</ul>
-					</div>
-				</div>
-			</div>";
+					</div>";
 			echo $links;
 		}
 	}
